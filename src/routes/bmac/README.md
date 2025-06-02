@@ -7,7 +7,7 @@ Real-time donation alerts and tracking system for Buy Me a Coffee supporters.
 -   Real-time donation notifications via Server-Sent Events (SSE)
 -   Persistent storage of donation history
 -   Donation alert overlay for streaming
--   Admin panel for monitoring and testing
+-   Dashboard for monitoring and testing
 
 ## Setup
 
@@ -32,7 +32,7 @@ Real-time donation alerts and tracking system for Buy Me a Coffee supporters.
 1. Access the donation overlay at:
    `http://localhost:4000/bmac/style1/`
 
-2. Access the admin panel at:
+2. Access the dashboard at:
    `http://localhost:4000/bmac/panel/`
 
 3. To test without real donations, you can send a test webhook payload to the `/bmac` endpoint

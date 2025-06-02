@@ -50,7 +50,7 @@ bun start
 -   `/bmac` - Webhook receiver for donation events
 -   `/bmac/donations` - Get donation history
 -   `/bmac/webhook` - SSE endpoint for real-time updates
--   `/bmac/panel/` - Admin panel interface
+-   `/bmac/panel/` - Dashboard interface
 -   `/bmac/style1/` - Donation alert overlay
 
 ### Static Files
