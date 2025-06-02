@@ -19,6 +19,8 @@ NIGHTSCOUT_URL="https://your-nightscout-instance.com"
 
 Replace `https://your-nightscout-instance.com` with your actual Nightscout URL.
 
+2. Make sure your Nightscout website is open to public.
+
 ## Using the Glucose Monitor
 
 1. Start the server by running the main application:
