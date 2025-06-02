@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap" rel="stylesheet" /> -->
+        <link href="/bmac/web/panel/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="dashboard">
+            <a href="/" class="back-button">
+                <span class="back-icon">←</span>
+                <span class="back-text">Back to Dashboard</span>
+            </a>
+
+            <div class="header">
+                <h1>💝 Donation Dashboard</h1>
+                <p>Real-time donation monitoring</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">💰</span>
+                    <div class="stat-value" id="totalAmount">$0.00</div>
+                    <div class="stat-label">Total Today</div>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">📊</span>
+                    <div class="stat-value" id="donationCount">0</div>
+                    <div class="stat-label">Donations</div>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">📈</span>
+                    <div class="stat-value" id="averageAmount">$0.00</div>
+                    <div class="stat-label">Average</div>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">🏆</span>
+                    <div class="stat-value" id="topDonation">$0.00</div>
+                    <div class="stat-label">Highest</div>
+                </div>
+            </div>
+
+            <div class="recent-donations">
+                <div class="section-header">
+                    <span class="section-title">📋 Recent Donations</span>
+                </div>
+                <div class="donations-list" id="donationsList">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎁</div>
+                        <p>Waiting for donations...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-indicator" id="statusIndicator">
+            <div class="pulse"></div>
+            <span>Connecting...</span>
+        </div>
+
+        <script defer src="/bmac/web/panel/index.js"></script>
+    </body>
+</html>

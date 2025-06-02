@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Now Playing</title>
+        <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="/spotify/web/style1/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="background-color" id="bg-color"></div>
+        <div class="music-display" id="music-d">
+            <div class="album-art-container">
+                <img src="" alt="Album Art" id="album-art" class="album-art" />
+                <div id="pause-overlay" class="pause-overlay hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="song-info">
+                <div class="song-title" id="title">Loading...</div>
+                <div class="artist" id="artist">Loading...</div>
+                <div class="track-duration">
+                    <span class="current-time" id="curr-duration">00:00</span>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <span class="total-time" id="song-duration">00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <script defer src="/spotify/web/style1/index.js"></script>
+    </body>
+</html>
