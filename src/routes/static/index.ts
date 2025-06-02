@@ -45,7 +45,12 @@ export async function serveStaticFile(filePath: string): Promise<Response> {
 }
 
 export async function handleStaticFiles(request: Request): Promise<Response | null> {
-    const { pathname } = new URL(request.url);
+    let { pathname } = new URL(request.url);
+
+    if (pathname !== "/" && pathname.endsWith("/")) {
+        pathname = pathname.slice(0, -1);
+    }
+
     console.log(`Handling static file request: ${pathname}`);
 
     // Root path handler
@@ -54,15 +59,15 @@ export async function handleStaticFiles(request: Request): Promise<Response | nu
     }
 
     // Handle HTML pages for bmac and spotify modules
-    if (pathname === "/bmac/panel" || pathname === "/bmac/panel/") {
+    if (pathname === "/bmac/panel") {
         return serveStaticFile(path.join(PROJECT_ROOT, "routes/bmac/web/panel/index.html"));
     }
 
-    if (pathname === "/bmac/style1" || pathname === "/bmac/style1/") {
+    if (pathname === "/bmac/style1") {
         return serveStaticFile(path.join(PROJECT_ROOT, "routes/bmac/web/style1/index.html"));
     }
 
-    if (pathname === "/spotify/style1" || pathname === "/spotify/style1/") {
+    if (pathname === "/spotify/style1") {
         return serveStaticFile(path.join(PROJECT_ROOT, "routes/spotify/web/style1/index.html"));
     }
 
@@ -81,27 +86,11 @@ export async function handleStaticFiles(request: Request): Promise<Response | nu
     }
 
     // Direct file access for assets within the web directory structure
-    if (pathname.startsWith("/spotify/web/") || pathname.startsWith("/bmac/web/") || pathname.startsWith("/main/web/")) {
+    if (pathname.startsWith("/spotify/web") || pathname.startsWith("/bmac/web") || pathname.startsWith("/main/web")) {
         const filePath = path.join(PROJECT_ROOT, "routes", pathname);
         console.log(`Serving web directory asset: ${filePath}`);
         return serveStaticFile(filePath);
     }
-
-    // // Serve main dashboard assets
-    // if (pathname.startsWith("/web/")) {
-    //     const filePath = path.join(PROJECT_ROOT, pathname);
-    //     console.log(`Serving main dashboard asset: ${filePath}`);
-    //     return serveStaticFile(filePath);
-    // }
-
-    // // Handle specific common assets
-    // if (pathname === "/web/index.css") {
-    //     return serveStaticFile(path.join(PROJECT_ROOT, "web/index.css"));
-    // }
-
-    // if (pathname === "/web/index.js") {
-    //     return serveStaticFile(path.join(PROJECT_ROOT, "web/index.js"));
-    // }
 
     console.log(`No static file handler matched for: ${pathname}`);
     // If no static file matches, return null

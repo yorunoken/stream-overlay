@@ -4,7 +4,11 @@ import { clients } from "../..";
 
 export async function handleBmacRoutes(request: Request): Promise<Response | null> {
     const { method } = request;
-    const { pathname } = new URL(request.url);
+    let { pathname } = new URL(request.url);
+
+    if (pathname !== "/" && pathname.endsWith("/")) {
+        pathname = pathname.slice(0, -1);
+    }
 
     // SSE webhook endpoint
     if (method === "GET" && pathname === "/bmac/webhook") {

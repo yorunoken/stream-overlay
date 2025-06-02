@@ -6,7 +6,11 @@ Spotify.initialize();
 
 export async function handleSpotifyRoutes(request: Request): Promise<Response | null> {
     const { method } = request;
-    const { pathname, searchParams } = new URL(request.url);
+    let { pathname, searchParams } = new URL(request.url);
+
+    if (pathname !== "/" && pathname.endsWith("/")) {
+        pathname = pathname.slice(0, -1);
+    }
 
     // Spotify authentication
     if (method === "GET" && pathname === "/spotify/login") {
