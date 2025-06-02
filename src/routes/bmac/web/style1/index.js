@@ -1,4 +1,3 @@
-const PORT = 4000;
 let alertTimeout;
 
 function formatCurrency(amount, currency = "USD") {
@@ -104,7 +103,7 @@ function onDonationSent(data) {
 
 async function main() {
     try {
-        const source = new EventSource(`http://localhost:${PORT}/webhook`);
+        const source = new EventSource(`/bmac/webhook`);
 
         source.onmessage = (e) => {
             try {

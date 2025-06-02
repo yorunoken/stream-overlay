@@ -1,4 +1,3 @@
-const PORT = 4000;
 let donations = [];
 let isConnected = false;
 
@@ -94,7 +93,7 @@ function onDonationReceived(data) {
 
 async function main() {
     try {
-        const oldDataRes = await fetch(`http://localhost:${PORT}/bmac/donations`);
+        const oldDataRes = await fetch(`/bmac/donations`);
         if (oldDataRes.ok) {
             const oldData = await oldDataRes.json();
             console.log(oldData);
@@ -103,7 +102,7 @@ async function main() {
             }
         }
 
-        const source = new EventSource(`http://localhost:${PORT}/bmac/webhook`);
+        const source = new EventSource(`/bmac/webhook`);
 
         source.onopen = () => {
             console.log("Connected to donation stream");

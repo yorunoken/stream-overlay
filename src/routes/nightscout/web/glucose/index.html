@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Glucose Monitor</title>
+        <link href="/nightscout/web/glucose/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="glucose-container">
+            <div class="glucose-value-container">
+                <div class="glucose-value" id="glucose-value">---</div>
+                <div class="glucose-unit">mg/dL</div>
+            </div>
+
+            <div class="glucose-info">
+                <div class="trend-arrow" id="trend-arrow">→</div>
+                <div class="glucose-delta" id="glucose-delta">±0</div>
+            </div>
+
+            <div class="glucose-time" id="time-ago">-- min ago</div>
+
+            <div class="status-indicator" id="status-indicator">
+                <div class="pulse"></div>
+                <span>Connecting...</span>
+            </div>
+        </div>
+
+        <script defer src="/nightscout/web/glucose/index.js"></script>
+    </body>
+</html>

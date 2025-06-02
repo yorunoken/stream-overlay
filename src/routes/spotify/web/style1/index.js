@@ -1,5 +1,3 @@
-const PORT = 4000;
-
 const title = document.getElementById("title");
 const artist = document.getElementById("artist");
 const currentDuration = document.getElementById("curr-duration");
@@ -78,7 +76,7 @@ function getAverageColorFromUrl(imageUrl) {
 }
 
 async function refresh() {
-    const spotify = await fetch(`http://localhost:${PORT}/spotify/api/currently-playing`, {
+    const spotify = await fetch(`/spotify/api/currently-playing`, {
         method: "GET",
     }).then((res) => res.json());
 
@@ -97,7 +95,7 @@ async function refresh() {
 
     title.innerText = item.name || "-";
     artist.innerText = item.artists[0].name || "-";
-    albumArt.src = `http://localhost:${PORT}/spotify/api/album-art?url=${albumSrc}`;
+    albumArt.src = `/spotify/api/album-art?url=${albumSrc}`;
     document.documentElement.style.setProperty("--album-color", `${albumAverageColor.r}, ${albumAverageColor.g}, ${albumAverageColor.b}`);
     document.documentElement.style.setProperty("--album-color-dark", `${albumDarkerColor.r}, ${albumDarkerColor.g}, ${albumDarkerColor.b}`);
 

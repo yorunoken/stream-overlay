@@ -5,6 +5,7 @@
     --accent-color: #6c5ce7;
     --spotify-color: #1db954;
     --bmac-color: #ffdd00;
+    --nightscout-color: #2196f3;
     --error-color: #e74c3c;
     --success-color: #2ecc71;
     --border-radius: 8px;
@@ -94,6 +95,15 @@ header p {
 
 .module-header.bmac i {
     color: var(--bmac-color);
+}
+
+.module-header.nightscout {
+    background-color: rgba(33, 150, 243, 0.2);
+    border-bottom: 2px solid var(--nightscout-color);
+}
+
+.module-header.nightscout i {
+    color: var(--nightscout-color);
 }
 
 .module-header i {

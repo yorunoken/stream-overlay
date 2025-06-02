@@ -58,7 +58,7 @@ export async function handleStaticFiles(request: Request): Promise<Response | nu
         return serveStaticFile(path.join(PROJECT_ROOT, "routes/main/web/index.html"));
     }
 
-    // Handle HTML pages for bmac and spotify modules
+    // Handle HTML pages for bmac, spotify, and nightscout modules
     if (pathname === "/bmac/panel") {
         return serveStaticFile(path.join(PROJECT_ROOT, "routes/bmac/web/panel/index.html"));
     }
@@ -71,13 +71,18 @@ export async function handleStaticFiles(request: Request): Promise<Response | nu
         return serveStaticFile(path.join(PROJECT_ROOT, "routes/spotify/web/style1/index.html"));
     }
 
-    // Handle asset requests for the bmac and spotify module pages
+    // New Nightscout route
+    if (pathname === "/nightscout/glucose") {
+        return serveStaticFile(path.join(PROJECT_ROOT, "routes/nightscout/web/glucose/index.html"));
+    }
+
+    // Handle asset requests for the module pages
     // This pattern handles paths like:
     // - /bmac/style1/index.css
     // - /bmac/style1/index.js
     // - /spotify/style1/index.css
     // - /bmac/panel/index.js, etc.
-    const moduleStyleAssetMatch = pathname.match(/^\/(bmac|spotify)\/(style\d+|panel)\/(.+\.(css|js|png|jpg|jpeg|svg))$/);
+    const moduleStyleAssetMatch = pathname.match(/^\/(bmac|spotify|nightscout)\/(style\d+|panel|glucose)\/(.+\.(css|js|png|jpg|jpeg|svg))$/);
     if (moduleStyleAssetMatch) {
         const [, module, styleDir, filename] = moduleStyleAssetMatch;
         const filePath = path.join(PROJECT_ROOT, "routes", module!, "web", styleDir!, filename!);
@@ -86,7 +91,7 @@ export async function handleStaticFiles(request: Request): Promise<Response | nu
     }
 
     // Direct file access for assets within the web directory structure
-    if (pathname.startsWith("/spotify/web") || pathname.startsWith("/bmac/web") || pathname.startsWith("/main/web")) {
+    if (pathname.startsWith("/spotify/web") || pathname.startsWith("/bmac/web") || pathname.startsWith("/main/web") || pathname.startsWith("/nightscout/web")) {
         const filePath = path.join(PROJECT_ROOT, "routes", pathname);
         console.log(`Serving web directory asset: ${filePath}`);
         return serveStaticFile(filePath);

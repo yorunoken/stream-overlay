@@ -3,6 +3,7 @@ import { handleBmacRoutes } from "./routes/bmac";
 import { handleSpotifyRoutes } from "./routes/spotify";
 import { handleStaticFiles } from "./routes/static";
 import { handleCorsPreflight } from "./utils/cors";
+import { handleNightscoutRoutes } from "./routes/nightscout";
 
 const PORT = process.env.PORT || 4000;
 
@@ -24,6 +25,10 @@ serve({
         // Buy Me A Coffee routes
         const bmacResponse = await handleBmacRoutes(request);
         if (bmacResponse) return bmacResponse;
+
+        // Nightscout routes
+        const nightscoutResponse = await handleNightscoutRoutes(request);
+        if (nightscoutResponse) return nightscoutResponse;
 
         // Spotify routes
         const spotifyResponse = await handleSpotifyRoutes(request);
